@@ -8,20 +8,26 @@
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
   </head>
-  <body style="margin: 0; overflow: hidden;>
-    <a-scene ps-camera rotation-reader>
-      
-      <a-entity
-        text="value: Welcome!; color: #FFD500; align: center"
-        position="0 3 -4"
-        scale="6 6 6"
-        animation="property: object3D.position.y;
-          to: 3.2; 
-          dir: alternate; 
-          dur: 2000; 
-          loop: true"
-          look-at="[gps-camera]" gps-entity-place="latitude: -8.893311; longitude: 116.284131;"></a-entity>  
+  <body style="margin: 0; overflow: hidden;">
+    <script>
+        AFRAME.registerComponent('locationfinder',{
+            init : function(){
+                navigator.geolocation.getCurrentPosition(function(location){
+                    console.log(location);
+                });
+            }
+        });
+    </script>
+    <a-scene embedded arjs="source:webcam;">
+        <a-camera locationfinder gps-camera="simulateLatitude:-8.893311;simulateLongitude:116.284131" rotation-reader>
+            <a-text value="tempat ini" scale="15 15 15"
+            gps-entity-place="latitude:-8.893311; longitude:116.284131; "></a-text>
+        </a-camera>
     </a-scene>
+ 
+    
+      
+    
   </body>
 
 </html>
