@@ -9,7 +9,7 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
   </head>
   <body style="margin: 0; overflow: hidden;>
-    <a-scene>
+    <a-scene ps-camera rotation-reader>
       
       <a-entity
         text="value: Welcome!; color: #FFD500; align: center"
@@ -21,7 +21,6 @@
           dur: 2000; 
           loop: true"
           look-at="[gps-camera]" gps-entity-place="latitude: -8.893311; longitude: 116.284131;"></a-entity>  
-    <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
   </body>
 
